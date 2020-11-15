@@ -1,27 +1,27 @@
 import { Card } from "components";
 
-import { API_KEY } from "../properties";
+import { getSources } from "../serverApi";
 
 const Sources = ({ sources }) => (
-    <>
+    <div className="bg-teal-200 min-h-screen">
         <div className="py-10">
             <h1 className="text-5xl text-center text-accent-1">Sources</h1>
         </div>
         <div className="flex flex-wrap">
-            {sources.sources.map((source) => (
+            {sources.map((source) => (
                 <Card
                     key={source.id}
+                    id={source.id}
                     name={source.name}
-                    category={source.category}
+                    description={source.description}
                 />
             ))}
         </div>
-    </>
+    </div>
 );
 
 export async function getStaticProps() {
-    const res = await fetch(`https://newsapi.org/v2/sources?apiKey=${API_KEY}`);
-    const sources = await res.json();
+    const sources = await getSources();
 
     return {
         props: {
