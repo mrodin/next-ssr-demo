@@ -1,7 +1,5 @@
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
-    return <Component {...pageProps} />;
-}
+const TechNewsApp = ({ Component, pageProps }) => <Component {...pageProps} />;
 
-export default MyApp;
+export default TechNewsApp;

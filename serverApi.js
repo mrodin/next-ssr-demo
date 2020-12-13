@@ -1,8 +1,20 @@
-import { API_KEY } from "./properties";
+const API_KEY = "";
+
+export const getTopHeadlines = async () => {
+    const res = await fetch(
+        `https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey=${API_KEY}`
+    );
+    if (res.ok) {
+        const topHeadlinesJson = await res.json();
+        return topHeadlinesJson.articles;
+    } else {
+        return [];
+    }
+};
 
 export const getSources = async () => {
     const res = await fetch(
-        `https://newsapi.org/v2/sources?category=technology&apiKey=${API_KEY}`
+        `https://newsapi.org/v2/sources?country=us&category=technology&apiKey=${API_KEY}`
     );
     if (res.ok) {
         const sourcesJson = await res.json();

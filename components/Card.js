@@ -17,3 +17,5 @@ export const Card = ({ id, name, description }) => (
         </div>
     </div>
 );
+
+export default Card;
